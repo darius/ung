@@ -1,0 +1,20 @@
+$ echo  >t yay 4 a hah
+$ echo >>t boo ane oop
+
+$ ../head -0 <t
+
+$ ../head -1 <t
+| yay 4 a hah
+
+$ ../head -2 <t
+| yay 4 a hah
+| boo ane oop
+
+$ ../head -3 <t
+| yay 4 a hah
+| boo ane oop
+
+
+$ ../head foo
+@ usage: head -<nlines>
+? 1

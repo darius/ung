@@ -1,0 +1,12 @@
+$ unset a; ../$ a
+
+$ env a=hello ../$ a
+| hello
+
+$ ../$
+@ usage: $ <variable>
+? 1
+
+$ ../$ hello world
+@ usage: $ <variable>
+? 1

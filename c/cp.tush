@@ -1,0 +1,13 @@
+$ echo hello >A
+$ ../cp A B
+$ diff A B
+
+to do: $ ../cp A A
+
+$ ../cp
+@ usage: cp source-file destination-file
+? 1
+
+$ ../cp A .
+@ ../cp: .: Is a directory
+? 1

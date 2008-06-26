@@ -1,0 +1,20 @@
+BEGIN {
+  srand()
+}
+
+{ line[NR] = $0 }
+
+END {
+  shuffle()
+  for (i = 1; i <= NR; ++i)
+    print line[i]
+}
+
+function shuffle() {
+  for (i = NR; 1 < i; --i) {
+    j = 1 + int(rand() * i)
+    t = line[j]
+    line[j] = line[i]
+    line[i] = t
+  }
+}

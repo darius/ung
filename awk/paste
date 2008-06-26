@@ -1,0 +1,19 @@
+BEGIN {
+  for (i = 1; i < ARGC; ++i) {
+    f[i] = ARGV[i]
+    ARGV[i] = ""
+  }
+  nf = ARGC - 1
+
+  for (;;) {
+    out = ""
+    any = 0
+    for (i = 1; i <= nf; ++i) {
+      any = ((getline line <f[i]) > 0) || any
+      out = (i == 1 ? "" : out OFS) line
+    }
+    if (!any)
+      break
+    print out
+  }
+}

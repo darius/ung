@@ -1,0 +1,31 @@
+$ echo  >pome on with the show
+$ echo >>pome
+$ echo >>pome o freddled gruntbuggly
+$ echo >>pome thy micturations are to me
+$ echo >>pome as curdled graddleblotchets
+$ echo >>pome on a lurgid bee
+$ echo >>pome
+$ echo >>pome 'mockles! fent on silpen tree,'
+$ echo >>pome 'blockards three a-feening.'
+$ echo >>pome 'mockles, what silps came to thee'
+$ echo >>pome 'in thy pantry dreaming?'
+
+$ ../sort </dev/null
+
+TODO: allow args:
+$ ../sort pome
+@ usage: sort
+? 1
+
+$ ../sort <pome
+| 
+| 
+| as curdled graddleblotchets
+| blockards three a-feening.
+| in thy pantry dreaming?
+| mockles! fent on silpen tree,
+| mockles, what silps came to thee
+| o freddled gruntbuggly
+| on a lurgid bee
+| on with the show
+| thy micturations are to me

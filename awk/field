@@ -1,0 +1,13 @@
+BEGIN {
+  for (i = 1; ARGV[i] != "-"; ++i) {  # XXX ugh
+    f[i] = ARGV[i] + 0
+    ARGV[i] = ""
+  }
+  nf = ARGC - 1
+}
+
+{
+  for (i = 1; i < nf; ++i)
+    result = (i == 1 ? "" : result OFS) $f[i]
+  print result
+}

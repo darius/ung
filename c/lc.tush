@@ -1,0 +1,18 @@
+$ echo  >f line 1
+$ echo >>f this is line 2
+
+$ ../lc /dev/null f
+|        0 /dev/null
+|        2 f
+
+$ ../lc <f
+|        2
+
+An input that doesn't end with a newline:
+
+$ echo helloxworld | tr 'x\n' '\nx' | ../lc
+|        1
+
+$ ../lc .
+@ ../lc: .: Is a directory
+? 1

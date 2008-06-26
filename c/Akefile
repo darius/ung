@@ -1,0 +1,45 @@
+all: $ cat chmod clear cp diff echo echoing env grep gt gtgt head ln ls lt mv pipe pwd rm sh sleep sort strings tail tr uniq lc xd p ansiterm-test
+
+test: all
+	tush-check *.tush
+
+clean:
+	rm -f *.o tush-output $ cat chmod clear cp diff echo echoing env grep gt gtgt head ln ls lt mv pipe pwd rm sh sleep sort strings tail tr uniq lc xd p
+	rm -rf tush-scratch
+
+cat: cat.o lib.o
+chmod: chmod.o lib.o
+clear: clear.o lib.o
+cp: cp.o lib.o
+diff: diff.o lib.o
+echo: echo.o lib.o
+head: head.o lib.o
+ln: ln.o lib.o
+ls: ls.o lib.o
+mv: mv.o lib.o
+pwd: pwd.o lib.o
+rm: rm.o lib.o
+env: env.o lib.o
+pipe: pipe.o lib.o
+sleep: sleep.o lib.o
+sort: sort.o lib.o
+strings: strings.o lib.o
+tail: tail.o lib.o
+tr: tr.o lib.o
+uniq: uniq.o lib.o
+lc: lc.o lib.o
+xd: xd.o lib.o
+
+grep: grep.o regexpoid.o lib.o
+
+sh: sh.o envlookup.o lib.o
+$: $.o envlookup.o lib.o
+
+lt: lt.o redirector.o lib.o
+gt: gt.o redirector.o lib.o
+gtgt: gtgt.o redirector.o lib.o
+
+echoing: echoing.o
+
+p: p.o lib.o ansiterm.o
+ansiterm-test: ansiterm-test.o ansiterm.o

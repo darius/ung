@@ -1,0 +1,18 @@
+TODO: leave out . and .. at least
+
+$ ../ls
+| .
+| ..
+
+$ echo yo >yo
+$ echo hey >hey
+
+$ ../ls
+| .
+| ..
+| hey
+| yo
+
+$ ../ls fooey
+@ usage: ls
+? 1

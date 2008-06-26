@@ -1,0 +1,23 @@
+$ ../uniq </dev/null
+
+$ echo hello world >h
+$ echo goodbye world >g
+
+$ cat h | ../uniq
+| hello world
+
+$ cat h h | ../uniq
+| hello world
+
+$ cat h h h | ../uniq
+| hello world
+
+$ cat h h h g g h | ../uniq
+| hello world
+| goodbye world
+| hello world
+
+
+$ ../uniq foo
+@ usage: uniq
+? 1

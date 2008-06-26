@@ -1,0 +1,6 @@
+$ ../clear | wc -c
+|        8
+
+$ ../clear whee
+@ usage: clear
+? 1

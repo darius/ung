@@ -1,0 +1,12 @@
+$ ../xd </dev/null
+| 00000000
+
+$ echo abcde >sample
+$ ../xd sample
+| 00000000  61 62 63 64 65 0a
+| 00000006
+
+$ ../xd fooey
+| 00000000
+@ ../xd: fooey: No such file or directory
+? 1

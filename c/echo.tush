@@ -1,0 +1,8 @@
+$ ../echo
+| 
+
+$ ../echo a
+| a
+
+$ ../echo Hi there how are you
+| Hi there how are you

@@ -1,0 +1,10 @@
+$ ../pipe echo hello world '|' wc -w
+|        2
+
+$ ../pipe
+@ usage: | command... | command...
+? 1
+
+$ ../pipe echo hello world '|'
+@ usage: | command... | command...
+? 1

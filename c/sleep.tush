@@ -1,0 +1,13 @@
+$ ../sleep 0
+
+$ ../sleep ooga
+@ ../sleep: ooga: Invalid argument
+? 1
+
+$ ../sleep
+@ usage: sleep <seconds>
+? 1
+
+$ ../sleep x y z
+@ usage: sleep <seconds>
+? 1

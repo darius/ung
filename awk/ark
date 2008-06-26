@@ -1,0 +1,70 @@
+#!/usr/bin/awk -f
+
+# ark -- a tar-like program
+# An arkfile is a sequence of entries.
+# An entry is a header followed by contents.
+# A header is a pair of #lines and filename, all on one line.
+# (This sucks for several reasons:
+#   - file must end with newline
+#   - filename can't have whitespace
+#   - no room for other metadata)
+
+BEGIN {
+  if (ARGC < 3) error("usage: ark options arkfile [filename...]")
+  command = ARGV[1]; ARGV[1] = "";
+  arkfile = ARGV[2]; ARGV[2] = "";
+  if (command == "c") {
+    printf "" >arkfile
+    for (i = 3; i < ARGC; ++i) {
+      append(ARGV[i])
+      ARGV[i] = ""
+  } }
+  else if (command == "x") {
+    if (ARGC == 3)
+      extract_all()
+    else
+      error("unimplemented")
+  }
+  else
+    error("Unknown option: " command)
+}
+
+function append(filename,   status, L, line, nlines, i) {
+  if (filename in appended)
+    error("File added twice: " filename)
+  appended[filename] = 1
+  for (;;) {
+    status = (getline L <filename)
+    if (status <= 0) break
+    line[++nlines] = L
+  }
+  if (status < 0)
+    error("Error reading " filename)
+  printf("%u %s\n", nlines, filename) >arkfile
+  for (i = 1; i <= nlines; ++i)
+    print line[i] >arkfile
+}
+
+function extract_all(   status, nlines, filename, L) {
+  for (;;) {
+    status = (getline <arkfile)
+    if (status <= 0) break
+    nlines = $1
+    filename = $2
+
+    for (i = 1; i <= nlines; ++i) {
+      status = (getline L <arkfile)
+      if (status <= 0)
+        error("Error or premature end reading " arkfile)
+      print L >filename
+    }
+    close(filename)
+  }
+  if (status < 0)
+    error("Error reading " arkfile)
+}
+
+function error(plaint) {
+  print plaint >"/dev/stderr"
+  exit 1
+}

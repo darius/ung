@@ -1,0 +1,15 @@
+$ ../cat /dev/null
+
+$ echo hello world | ../cat
+| hello world
+
+$ echo >A this is A
+$ echo >B and this is B
+$ ../cat A B A
+| this is A
+| and this is B
+| this is A
+
+$ ../cat nonexistent
+@ ../cat: nonexistent: No such file or directory
+? 1

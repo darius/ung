@@ -1,0 +1,13 @@
+{
+  for (i = 0; i <= NF; ++i)
+    cell[i, NR] = $i
+  if (widest < NF) widest = NF
+}
+
+END {
+  for (i = 1; i <= widest; ++i) {
+    for (j = 1; j <= NR; ++j)
+      printf (j == 1 ? "%s" : " %s"), cell[i, j]
+    print ""
+  }
+}

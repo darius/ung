@@ -1,0 +1,11 @@
+$ ../tr '' '' </dev/null
+
+$ echo hello world | ../tr '' ''
+| hello world
+
+$ echo hello world | ../tr aeiou eioua
+| hillu wurld
+
+$ echo hello world | ../tr aeiou e
+| helle werld
+

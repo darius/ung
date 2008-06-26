@@ -1,0 +1,83 @@
+Some test data:
+
+$ echo  >decl When in the course of human events
+$ echo >>decl it becomes necessary
+$ echo >>decl for one People to dissolve
+
+$ echo >jabber These were the borogoves...
+
+Some bad invocations:
+
+$ ../grep
+@ usage: grep [-inv] pattern filename...
+? 2
+
+$ ../grep x nonexistent
+@ ../grep: nonexistent: No such file or directory
+? 2
+
+The simplest possible patterns:
+
+$ ../grep '' decl
+| When in the course of human events
+| it becomes necessary
+| for one People to dissolve
+
+$ ../grep b decl
+| it becomes necessary
+
+$ ../grep ve decl
+| When in the course of human events
+| for one People to dissolve
+
+A non-matching pattern:
+
+$ ../grep hooray decl
+? 1
+
+The option switches:
+
+$ ../grep -i people decl
+| for one People to dissolve
+
+$ ../grep -n ne decl
+| 2:it becomes necessary
+| 3:for one People to dissolve
+
+$ ../grep -v the decl
+| it becomes necessary
+| for one People to dissolve
+
+$ ../grep -vni BECOMES decl
+| 1:When in the course of human events
+| 3:for one People to dissolve
+
+Show filename prefixes when there's more than one file to search:
+
+$ ../grep -i the decl jabber
+| decl:When in the course of human events
+| jabber:These were the borogoves...
+
+$ cat decl jabber | ../grep -i the
+| When in the course of human events
+| These were the borogoves...
+
+
+TODO And we haven't checked non-literal regular expressions!
+That'd include: . .* a* ^ $ \*
+and combos thereof.
+
+$ cat decl jabber | ../grep -i '^the'
+| These were the borogoves...
+
+../grep 'xyz$'
+../grep '^xyz$'
+../grep '.'
+../grep 'ax*b'
+../grep 'a.*b'
+../grep 'a\*b'
+../grep 'ax*y*b.*c'
+../grep 'x*x*.*y'
+
+Won't work yet, but should someday:
+Cases with null bytes.

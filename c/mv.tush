@@ -1,0 +1,17 @@
+$ echo yo >x
+
+$ ../mv x y
+$ ls
+| y
+$ cat y
+| yo
+
+$ ../mv y y
+
+$ ../mv
+@ usage: mv from-file to-file
+? 1
+
+$ ../mv y y y
+@ usage: mv from-file to-file
+? 1

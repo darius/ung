@@ -1,0 +1,16 @@
+$ touch A
+$ ../chmod 123 A
+$ ls -l A | awk '{print $1}'
+| ---x-w--wx
+
+$ ../chmod
+@ usage: chmod permissions filename
+? 1
+
+$ ../chmod 123 nonexistent
+@ ../chmod: nonexistent: No such file or directory
+? 1
+
+$ ../chmod fooey A
+@ ../chmod: fooey: Invalid argument
+? 1

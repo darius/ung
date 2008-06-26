@@ -1,0 +1,6 @@
+$ ../pwd | awk -F/ '{print $NF}'
+| tush-scratch
+
+$ ../pwd fooey
+@ usage: pwd
+? 1

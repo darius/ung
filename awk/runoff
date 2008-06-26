@@ -1,0 +1,98 @@
+BEGIN {
+  filling       = 1
+  indent        = 0
+  right_margin  = 60
+  line          = ""
+  pending_space = 0
+}
+
+/^[.][a-z]/            { dispatch_command(); next }
+
+filling && /^[ \t]*$/  { do_break(); next }
+filling && /^[ \t]/    { do_ti(count_leading_spaces()) }  # fall through
+filling	               { fill_line(); next }
+
+                       { output($0) }
+
+END {
+  do_break()
+}
+
+function dispatch_command() {
+  # XXX check for right # of arguments
+  # TODO add a command ".escape" (or something) that lets you output
+   #  a line that starts with "."
+  if      ($1 == ".break")       { do_break() }   # XXX also set fill mode?
+  else if ($1 == ".center")      { do_break(); do_center() }
+  else if ($1 == ".fill")        { do_break(); filling = 1 }
+  else if ($1 == ".indent")      { do_break(); indent = $2 }
+  else if ($1 == ".nofill")      { do_break(); filling = 0 }
+  else if ($1 == ".rightmargin") { do_break(); right_margin = $2 }
+  else                           { error("Unknown command") }
+}
+
+function do_center() {
+  sub(/^[.]center[ \t]*/, "")
+  sub(/[ \t]*$/, "")
+  print center($0, right_margin)   # XXX what about left margin?
+}
+
+function center(s, width) {
+  if (width <= length(s))
+    return s
+  return blanks(int((width - length(s)) / 2))
+}
+
+function count_leading_spaces(   t) {
+  t = $0
+  sub(/[^ \t].*/, "", t)
+  return length(t)
+}
+
+function push(s) {
+  if (line ~ /[^ \t\r]/) 
+    output(s)
+}
+
+function output(s) {
+  if (pending_space) {
+    print ""
+    pending_space = 0
+  }
+  print s
+}
+
+function do_break() {
+  push(line)
+  line = ""
+  pending_space = 1
+}
+
+function do_ti(n) {
+  do_break()
+  line = blanks(n)
+}
+
+function blanks(n) {
+  return sprintf("%*s", n, "")
+}
+
+function fill_line(   i) {
+  for (i = 1; i <= NF; ++i)
+    add_word($i)
+}
+
+function add_word(w,   new_line) {
+  new_line = append(line, w)
+  if (right_margin < length(new_line)) {
+    push(line)
+    new_line = w
+  }
+  line = new_line
+}
+
+function append(s, w) {
+  if (s ~ /[^ \t]$/)
+    return s " " w
+  return s w
+}

@@ -1,0 +1,36 @@
+$ ../gt foo echo hello there
+$ cat foo
+| hello there
+
+$ ../gt foo echo hiya
+$ cat foo
+| hiya
+
+$ ../gtgt foo echo how are you
+$ cat foo
+| hiya
+| how are you
+
+$ ../lt foo cat
+| hiya
+| how are you
+
+Some error cases. XXX Fix to yield status 127 or something?
+
+$ ../lt
+@ usage: < filename command...
+? 1
+
+$ ../gt foo
+@ usage: > filename command...
+? 1
+
+$ ../lt nonexistent cat
+@ ../lt: nonexistent: No such file or directory
+? 1
+
+$ chmod -w foo
+$ ../gt foo echo bad kitty
+@ ../gt: foo: Permission denied
+? 1
+

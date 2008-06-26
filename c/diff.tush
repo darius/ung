@@ -1,0 +1,30 @@
+$ echo hello >A1
+$ echo hello >A2
+$ echo there >B
+
+$ ../diff A1 A2
+
+XXX We're going to change the output format, but for now, this:
+
+$ ../diff A1 B
+| d 1: hello
+| 
+| i 1: there
+| 
+? 1
+
+$ ../diff
+@ usage: diff file1 file2
+? 1
+
+$ ../diff x
+@ usage: diff file1 file2
+? 1
+
+$ ../diff A1 nonexistent
+@ ../diff: nonexistent: No such file or directory
+? 1
+
+$ ../diff A1 A2 B
+@ usage: diff file1 file2
+? 1
