@@ -4,7 +4,7 @@
 # _The Awk Programming Language_.
 
 BEGIN {
-    if (ARGC == 1)	the_target = ""
+    if (ARGC == 1)      the_target = ""
     else if (ARGC == 2) the_target = ARGV[1]
     else                error("usage: ake [target]")
 
@@ -25,7 +25,7 @@ BEGIN {
 #   cmd[t]       the command to use to update target t
 #
 #   progress[t]  1 if we're working on updating t's dependencies;
-#		 2 if we've finished that
+#                2 if we've finished that
 #
 #   age[t]       age ranking: smaller means younger
 #                (t in age[t] may be either a target or a file)
@@ -34,14 +34,14 @@ BEGIN {
 function parse(filename,    target,i) {
     while (getline <filename > 0)
         if ($0 ~ /^#/)                     # a comment
-	    ;
+            ;
         else if ($0 ~ /^[ \t]/) {          # a command
             if (target == "")
                 error("command with no target: " $0)
             cmd[target] = cmd[target] $0 "\n"
         } else if ($0 ~ /^[A-Za-z$].*:/) {  # $1: $2 $3 ...
             sub(/:/, "")
-	    target = $1
+            target = $1
             if (++targets[target] > 1)
                 error(target " is multiply defined")
             for (i = 2; i <= NF; i++)
@@ -82,7 +82,7 @@ function update(t) {
         # XXX what if one line in the command fails?
         #     do subsequent lines get run?
         if (system(get_update_command(t)))
-	    error("failed")
+            error("failed")
         rank_ages()
         check_up_to_date(t)
         return 1
@@ -117,7 +117,7 @@ function check_up_to_date(t,    i,dep) {
         #  code, given two files of the same age, ranks them arbitrarily
         #  (I think by alphabetical order). What to do?
         if (age[dep] < age[t])
-	    error(t "'s update rule failed to make it younger than " dep)
+            error(t "'s update rule failed to make it younger than " dep)
     }
 }
 
@@ -128,11 +128,11 @@ function update_dependencies(t,    dirty,i,dep) {
     for (i = 1; i <= ndeps[t]; ++i) {
         dep = deps[t, i]
         if (progress[dep] == 0)
-	    update(dep)
+            update(dep)
         else if (progress[dep] == 1)
             error(dep " and " t " are circularly defined")
         if (age[dep] <= age[t])
-	    dirty = 1
+            dirty = 1
     }
     progress[t] = 2
     return dirty

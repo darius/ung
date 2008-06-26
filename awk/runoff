@@ -10,7 +10,7 @@ BEGIN {
 
 filling && /^[ \t]*$/  { do_break(); next }
 filling && /^[ \t]/    { do_ti(count_leading_spaces()) }  # fall through
-filling	               { fill_line(); next }
+filling                { fill_line(); next }
 
                        { output($0) }
 

@@ -12,7 +12,7 @@ void aterm_clear_to_bottom (FILE *out);
 enum {
     aterm_normal    = 0,
     aterm_bright,
-    aterm_dim,			// N.B. dim doesn't work for me.
+    aterm_dim,                        // N.B. dim doesn't work for me.
     aterm_underline = 4,
     aterm_blink,
     aterm_reverse   = 7,
