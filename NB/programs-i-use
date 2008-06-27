@@ -1,0 +1,85 @@
+how far am I from using only my own programs for my everyday tasks?
+
+X ro
+	we want the right modification time on the backup file
+X ake
+  sh
+  which -- (will I still want this?)
+
+X echo
+X cat
+X cp
+X rm
+X ls
+X mv
+X ln
+X pwd
+  mkdir
+  rmdir
+X chmod
+  chown
+  touch
+
+X head
+X tail
+X grep
+X sort
+X uniq
+X wc
+X tr
+X diff
+. sed
+X strings
+X xd (hexdump)
+. comm
+. tee
+
+X env -- but combining the env printer with the #! shim is a hack
+. date
+X sleep
+  kill
+  time
+  nohup
+  ps
+  du
+  df
+  find
+  xargs
+  cal
+  file
+  split
+  tty
+
+X less
+X clear
+  top
+
+  darcs
+
+  wget
+
+  awk
+
+lpr
+
+terminal
+
+man
+
+sudo
+su
+
+mail
+
+tar
+gzip/gunzip/zcat
+zip/unzip
+bzip2/bunzip2/bzcat
+
+ssh
+scp
+md5sum
+
+cc
+gdb
+strip
