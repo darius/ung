@@ -4,8 +4,9 @@ Distributed under GNU General Public Licence v3
 http://www.gnu.org/licenses/gpl.html
 
 This is an exercise in self-reliance: to replace all the programs I
-use day-to-day in my programming. But it's not near the switchover
-point yet.
+use day-to-day in my programming. The new programs should have clean
+behavior, with clean code and as little of it as possible. But I'm
+not near the switchover point yet.
 
 It seems Microsoft may intend to use this acronym:
 http://it.slashdot.org/it/08/02/27/1425205.shtml
