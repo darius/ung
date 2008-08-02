@@ -12,3 +12,10 @@ It seems Microsoft may intend to use this acronym:
 http://it.slashdot.org/it/08/02/27/1425205.shtml
 But I wrote this code last year and I don't feel like changing the 
 name when they haven't released theirs yet anyway.
+
+To build the C code:
+
+$ cd c
+$ export CFLAGS='-g2'  # or whatever
+$ ../ake/ake
+$ ../ake/ake           # might be needed because ake sux0rz 

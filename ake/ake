@@ -1,7 +1,10 @@
 #!/usr/bin/env awk -f
 
 # A little Make descended from the make.awk in Aho, Kernighan, & Weinberger,
-# _The Awk Programming Language_.
+# _The Awk Programming Language_. Embed this file in a project to declare its
+# independence from any external 'make' program. Get the latest version at
+# http://github.com/darius/ake
+# (Submit any broadly-useful patches to there, not here.)
 
 BEGIN {
     if (ARGC == 1)      the_target = ""
