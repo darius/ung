@@ -19,3 +19,11 @@ $ cd c
 $ export CFLAGS='-g2'  # or whatever
 $ ../ake/ake
 $ ../ake/ake           # might be needed because ake sux0rz 
+
+You can leave out the '../ake/' part if you install ake in your PATH,
+obviously; the latest version will be at http://github.com/darius/ake
+
+To run the unit tests: 
+First install Tush from http://github.com/darius/tush/ -- then:
+
+$ ../ake/ake test
