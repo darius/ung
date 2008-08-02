@@ -1,5 +1,5 @@
 UNG
-Copyright (c) 2008 by Darius Bacon http://accesscom.com/~darius
+Copyright (c) 2008 by Darius Bacon <darius@wry.me>
 Distributed under GNU General Public Licence v3
 http://www.gnu.org/licenses/gpl.html
 
@@ -16,9 +16,9 @@ name when they haven't released theirs yet anyway.
 To build the C code:
 
 $ cd c
-$ export CFLAGS='-g2'  # or whatever
+$ export CFLAGS='-Wall -W -g2'  # or whatever
 $ ./ake
-$ ./ake                # might be needed because ake sux0rz 
+$ ./ake                         # might be needed because ake sux0rz 
 
 To run the unit tests: 
 First install Tush from http://github.com/darius/tush/ -- then:
