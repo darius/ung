@@ -16,11 +16,10 @@ name when they haven't released theirs yet anyway.
 To build the C code:
 
 $ cd c
-$ export CFLAGS='-Wall -W -g2'  # or whatever
-$ ./ake
-$ ./ake                         # might be needed because ake sux0rz 
+$ ./build
+$ ./build         # might be needed because ake sux0rz 
 
 To run the unit tests: 
 First install Tush from http://github.com/darius/tush/ -- then:
 
-$ ./ake test
+$ ./build test

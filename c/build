@@ -1,0 +1,19 @@
+#!/bin/bash
+# XXX is this a plain old Bourne shellscript and not a Bash one?
+
+# Build this project from Akefile using ake, first installing ake if
+# necessary.
+
+# You may want to configure CFLAGS.
+export CFLAGS='-g2 -Wall -W'
+
+# (Isn't there any Bash expression for "NOT -x ake"? I couldn't find any...)
+if [ -x ake ]
+then
+    echo -n    # (An actual command seems syntactically required here)
+else
+    (curl 'http://github.com/darius/ake/tree/master%2Fake?raw=true' -o ake &&
+     chmod +x ake) || exit 1
+fi
+
+./ake "$@"
