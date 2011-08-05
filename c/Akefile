@@ -4,7 +4,7 @@ test: all
   tush-check *.tush
 
 clean:
-  rm -f *.o tush-output $ cat chmod clear cp diff echo echoing env grep gt gtgt head ln ls lt mv pipe pwd rm sh sleep sort strings tail tr uniq lc xd p
+  rm -f *.o tush-output $ cat chmod clear cp diff echo echoing env grep gt gtgt head ln ls lt mv pipe pwd rm sh sleep sort strings tail tr uniq lc xd p ansiterm-test
   rm -rf tush-scratch
 
 cat: cat.o lib.o
