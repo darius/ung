@@ -1,6 +1,7 @@
 #include "lib.h"
 
-#include <sys/dirent.h>
+//#include <sys/dirent.h>
+#include <dirent.h>
 
 const char *usage_message = "ls";
 
@@ -22,7 +23,7 @@ static void ls_dir (const char *filename) {
   int fd = open (filename, O_RDONLY, 0);
   if (fd < 0)
     sys_panic (filename);
-  {
+  { // XXX use opendir(3) and readdir(3) instead for POSIXicity
     struct dirent entries[16384];
     long base;
     int nbytes = getdirentries (fd, entries, sizeof entries, &base);
