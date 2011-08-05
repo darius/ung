@@ -12,5 +12,5 @@ $ ../chmod 123 nonexistent
 ? 1
 
 $ ../chmod fooey A
-@ ../chmod: fooey: Invalid argument
+@ ../chmod: Missing number argument
 ? 1

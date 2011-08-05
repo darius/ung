@@ -10,8 +10,8 @@ $ echo hey >hey
 $ ../ls
 | .
 | ..
-| hey
 | yo
+| hey
 
 $ ../ls fooey
 @ usage: ls

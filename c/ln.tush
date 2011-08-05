@@ -5,8 +5,7 @@ $ ../ln yo mama
 This prints out the #links column and the filename column --
 #links should be 2:
 
-$ ls -l | awk '{print $2, $9}'
-| 16 
+$ ls -l | awk '1 < NR {print $2, $8}'
 | 2 mama
 | 2 yo
 

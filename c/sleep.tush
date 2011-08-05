@@ -1,7 +1,7 @@
 $ ../sleep 0
 
 $ ../sleep ooga
-@ ../sleep: ooga: Invalid argument
+@ ../sleep: Missing number argument
 ? 1
 
 $ ../sleep

@@ -1,5 +1,5 @@
 $ ../clear | wc -c
-|        8
+| 8
 
 $ ../clear whee
 @ usage: clear

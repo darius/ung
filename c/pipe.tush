@@ -1,5 +1,5 @@
 $ ../pipe echo hello world '|' wc -w
-|        2
+| 2
 
 $ ../pipe
 @ usage: | command... | command...
