@@ -12,8 +12,8 @@ if [ -x ake ]
 then
     echo -n    # (An actual command seems syntactically required here)
 else
-    (curl 'http://github.com/darius/ake/tree/master%2Fake?raw=true' -o ake &&
+    (curl 'https://raw.github.com/darius/ake/master/ake' -o ake &&
      chmod +x ake) || exit 1
 fi
 
-./ake "$@"
+awk -f ake "$@"
